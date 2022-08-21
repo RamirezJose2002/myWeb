@@ -14,7 +14,6 @@
     z-index: 99;
 }
 
-
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -60,6 +59,7 @@
     font-weight: normal;
     border-radius: 50px;
 }
+
 
 
 /*** Layout ***/
