@@ -33,6 +33,27 @@ if (isset($_GET['idB_delete'])) {
     $queryEliminar = mysqli_query($conn, $sqlEliminar);
 }
 
+if (isset($_GET['guardarC'])) {
+    $idEditar = $_GET['idEditarModal'];
+    $nombre = $_GET['nombreModal'];
+    $precio = ltrim($_GET['precioModal'], '₡');
+
+    $tipo = $_GET['tipoModal'];
+
+    $sqlUpdateC = "UPDATE tcomidas SET nombre='$nombre',precio='$precio',tipo='$tipo' WHERE id='$idEditar'";
+    $queryUpdateC = mysqli_query($conn, $sqlUpdateC);
+}
+
+if(isset($_GET['guardarB'])){
+    $idEditar = $_GET['idEditarModalB'];
+    $nombre = $_GET['nombreModalB'];
+    $precio = ltrim($_GET['precioModalB'], '₡');
+    $tipo = $_GET['tipoModalB'];
+
+    $sqlUpdateB = "UPDATE tbebidas SET nombre = '$nombre', precio = '$precio', tipo = '$tipo' WHERE id='$idEditar'";
+    $queryUpdateB = mysqli_query($conn, $sqlUpdateB);
+}
+
 ?>
 
 <div class="row">
@@ -94,23 +115,23 @@ if (isset($_GET['idB_delete'])) {
         ?>
             <tr>
                 <td weight="150">
-                    <a class="btn btn-light btnEditarComida" idEditar="<?= $row['id'] ?>" data-bs-toggle="modal" data-bs-target="#updateC"><i class="fa fa-pen"></i></a>
+                    <a class="btn btn-light btnEditarComida" idEditar="<?= $row['id'] ?>"><i class="fa fa-pen"></i></a>
                     <a href="menu.php?idC_delete=<?= $row['id'] ?>" class="btn btn-danger" onclick="return confirm ('¿Está seguro(a) que desea eliminar este platillo?')"><i class="fa fa-trash"></i></a>
                 </td>
-                <td><span id="nombre"><?= $row['nombre'] ?></span></td>
-                <td><span id="tipo"><?php
-                    if ($row['tipo'] == 1) {
-                        echo "Postre";
-                    } elseif ($row['tipo'] == 2) {
-                        echo 'Desayuno';
-                    } elseif ($row['tipo'] == 3) {
-                        echo 'Almuerzo';
-                    } elseif ($row['tipo'] == 4) {
-                        echo 'Comida rápida';
-                    }
+                <td><span id="nombre<?php echo $row['id'] ?>"><?= $row['nombre'] ?></span></td>
+                <td><span id="tipo<?php echo $row['id'] ?>"><?php
+                                                            if ($row['tipo'] == 1) {
+                                                                echo "Postre";
+                                                            } elseif ($row['tipo'] == 2) {
+                                                                echo 'Desayuno';
+                                                            } elseif ($row['tipo'] == 3) {
+                                                                echo 'Almuerzo';
+                                                            } elseif ($row['tipo'] == 4) {
+                                                                echo 'Comida rápida';
+                                                            }
 
-                    ?></span></td>
-                <td><span id="precio">₡ <?= $row['precio'] ?></span></td>
+                                                            ?></span></td>
+                <td><span id="precio<?php echo $row['id'] ?>">₡ <?= $row['precio'] ?></span></td>
             </tr>
         <?php
         }
@@ -123,29 +144,28 @@ if (isset($_GET['idB_delete'])) {
         ?>
             <tr>
                 <td>
-                    <button href="#updateB" class="btn btn-light" data-bs-toggle="modal"><i class="fa fa-pen"></i></button>
+                    <a class="btn btn-light btnEditarBebida" idEditarB="<?= $row['id'] ?>"><i class="fa fa-pen"></i></a>
                     <a href="menu.php?idB_delete=<?= $row['id'] ?>" class="btn btn-danger" onclick=" return confirm('¿Está seguro(a) que desea eliminar esta bebida?')"><i class="fa fa-trash"></i></a>
                 </td>
-                <td><?= $row['nombre'] ?></td>
-                <td><?php
-                    if ($row['tipo'] == 1) {
-                        echo "Caliente";
-                    } elseif ($row['tipo'] == 2) {
-                        echo 'Fria';
-                    } elseif ($row['tipo'] == 3) {
-                        echo 'Natural';
-                    } elseif ($row['tipo'] == 4) {
-                        echo 'Gaseosa';
-                    }
-                    ?></td>
-                <td>₡ <?= $row['precio'] ?></td>
+                <td><span id="nombreB<?php echo $row['id'] ?>"><?= $row['nombre'] ?></span></td>
+                <td><span id="tipoB<?php echo $row['id'] ?>"><?php
+                                                    if ($row['tipo'] == 1) {
+                                                        echo "Caliente";
+                                                    } elseif ($row['tipo'] == 2) {
+                                                        echo 'Fria';
+                                                    } elseif ($row['tipo'] == 3) {
+                                                        echo 'Natural';
+                                                    } elseif ($row['tipo'] == 4) {
+                                                        echo 'Gaseosa';
+                                                    }
+                                                    ?></span></td>
+                <td><span id="precioB<?php echo $row['id'] ?>">₡ <?= $row['precio'] ?></span></td>
             </tr>
         <?php
         }
         ?>
     </tbody>
 </table>
-
 
 <?php
 include('addModal.php');
