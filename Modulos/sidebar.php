@@ -28,7 +28,7 @@
 
                     <a href="<?php echo $baseURL;?>/Menu/menu.php" class="nav-item nav-link"><i class="fa fa-list me-2"></i>Menu</a>
 
-                    <a href="usuarios.html" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Usuarios</a>
+                    <a href="<?php echo $baseURL;?>/usuarios/usuarios.php" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Usuarios</a>
                     
                 </div>
             </nav>

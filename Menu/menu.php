@@ -44,7 +44,7 @@ if (isset($_GET['guardarC'])) {
     $queryUpdateC = mysqli_query($conn, $sqlUpdateC);
 }
 
-if(isset($_GET['guardarB'])){
+if (isset($_GET['guardarB'])) {
     $idEditar = $_GET['idEditarModalB'];
     $nombre = $_GET['nombreModalB'];
     $precio = ltrim($_GET['precioModalB'], '₡');
@@ -149,16 +149,16 @@ if(isset($_GET['guardarB'])){
                 </td>
                 <td><span id="nombreB<?php echo $row['id'] ?>"><?= $row['nombre'] ?></span></td>
                 <td><span id="tipoB<?php echo $row['id'] ?>"><?php
-                                                    if ($row['tipo'] == 1) {
-                                                        echo "Caliente";
-                                                    } elseif ($row['tipo'] == 2) {
-                                                        echo 'Fria';
-                                                    } elseif ($row['tipo'] == 3) {
-                                                        echo 'Natural';
-                                                    } elseif ($row['tipo'] == 4) {
-                                                        echo 'Gaseosa';
-                                                    }
-                                                    ?></span></td>
+                                                                if ($row['tipo'] == 1) {
+                                                                    echo "Caliente";
+                                                                } elseif ($row['tipo'] == 2) {
+                                                                    echo 'Fria';
+                                                                } elseif ($row['tipo'] == 3) {
+                                                                    echo 'Natural';
+                                                                } elseif ($row['tipo'] == 4) {
+                                                                    echo 'Gaseosa';
+                                                                }
+                                                                ?></span></td>
                 <td><span id="precioB<?php echo $row['id'] ?>">₡ <?= $row['precio'] ?></span></td>
             </tr>
         <?php

@@ -156,7 +156,7 @@
 
                     <label for="tipoModalB">Categoria:</label>
                     <select class="form-control" name="tipoModalB" id="tipoModalB" required>
-                        
+
                         <option value="">Seleccione el tipo...</option>
                         <option value="1">Caliente</option>
                         <option value="2">Fria</option>
